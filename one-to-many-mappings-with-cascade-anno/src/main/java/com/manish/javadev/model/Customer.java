@@ -31,14 +31,7 @@ public class Customer {
 	@Column(name = "AGE")
 	private int age;
 
-	/*
-	 * What mappedBy: mappedBy attribute tell Hibernate/JPA that one table owns
-	 * the relationship, hence it is stored as a column in a table.
-	 * 
-	 * Without mappedBy attribute, relationship is external, Hibernate/JPA
-	 * create another table to hold the relationship. *
-	 * 
-	 */
+	
 	@OneToMany(mappedBy = "customer")
 	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	private Set<Order> order;

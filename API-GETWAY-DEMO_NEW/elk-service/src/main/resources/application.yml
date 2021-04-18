@@ -1,0 +1,9 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: ELK-SERVICE
+logging:
+  file:
+    path: D:\Java_Work\API-GETWAY-DEMO_NEW\elk-log\
+  

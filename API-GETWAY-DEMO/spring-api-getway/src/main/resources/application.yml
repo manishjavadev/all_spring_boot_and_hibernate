@@ -1,0 +1,54 @@
+server:
+  port: 9092
+
+
+
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+    ## uri: lb://ORDER-SERVICE is your running microservice, 
+    ## name Should be same as your Microservice name  lb stands for loadbalaced
+    ## Any request come to <</api/order/**>> will be forwarded to uri: lb://ORDER-SERVICE Microservice
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/order/**
+  
+  ##About Filter
+  ## Any request come to <</api/order/**>> and failed by any reason, 
+  ## will be forwarded to fallbackurl
+          filters:
+            - name: CircuitBreaker    ## That Name should be CircuitBreaker
+              args:
+                name: order-service
+                fallbackuri: forward:/orderFallBack
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/api/payment/**
+          filters:
+            - name: CircuitBreaker   ## That Name should be CircuitBreaker
+              args:
+                name: payment-service
+                fallbackuri: forward:/paymentFallback
+                
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+## If any of the microservice will take more than 5 sec, 
+## then we assuem, that particular microservice is down
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+            
+            

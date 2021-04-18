@@ -26,7 +26,7 @@ public class AdharDetail {
 	@Column(name = "ADHAR_NUMBER")
 	private String adharNumber;
 
-	@OneToOne(mappedBy = "adharDetail")	
+	@OneToOne(mappedBy = "adharDetail")
 	private UserDetail userDetail;
 
 	public AdharDetail() {

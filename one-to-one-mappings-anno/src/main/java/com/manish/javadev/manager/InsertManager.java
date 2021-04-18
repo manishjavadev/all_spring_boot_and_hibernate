@@ -22,6 +22,7 @@ public class InsertManager {
 			userDetail.setAdharDetail(adharDetail);
 			adharDetail.setUserDetail(userDetail);
 			session.save(userDetail);
+			//session.save(adharDetail);
 
 			tx.commit();
 			session.flush();

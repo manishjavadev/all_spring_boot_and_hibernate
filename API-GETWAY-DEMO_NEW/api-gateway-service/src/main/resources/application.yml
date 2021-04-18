@@ -1,0 +1,26 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+      - id: order-service
+        uri: lb://ORDER-SERVICE
+        predicates:
+        - Path=/api/order/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: order-service
+            fallbackuri: forward:/orderFallBack
+      - id: payment-service
+        uri: lb://PAYMENT-SERVICE
+        predicates:
+        - Path=/api/payment/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: payment-service
+            fallbackuri: forward:/paymentFallback

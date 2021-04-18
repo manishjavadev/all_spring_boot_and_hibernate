@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri:
+      - http://localhost:9191
+      username: manishjavadev
+      password: Man@9919971752
