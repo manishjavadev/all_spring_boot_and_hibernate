@@ -1,0 +1,8 @@
+2017-08-27 15:13:25 - Starting FirstSpringBootDemoAppApplication on Manish with PID 5328 (F:\Lenovo_Work\Spring-Boot-Sts\spring-boot-logging-demo-app\target\classes started by Manish in F:\Lenovo_Work\Spring-Boot-Sts\spring-boot-logging-demo-app)
+2017-08-27 15:13:25 - Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-08-27 15:13:25 - No active profile set, falling back to default profiles: default
+2017-08-27 15:13:30 - Started FirstSpringBootDemoAppApplication in 5.156 seconds (JVM running for 5.744)
+2017-08-27 15:13:30 - Logger from DEBUG
+2017-08-27 15:13:30 - Logger from INFO
+2017-08-27 15:13:30 - Logger from WARN
+2017-08-27 15:13:30 - Logger from ERROR
